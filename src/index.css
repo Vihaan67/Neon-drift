@@ -1,0 +1,119 @@
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #000;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* UI Overlay Overlay Styles */
+.ui-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* Let clicks pass through to 3D canvas */
+}
+
+.speedometer {
+  position: absolute;
+  bottom: 30px;
+  right: 40px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 20px;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  border: 4px solid #333;
+}
+
+.speed-value {
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.speed-unit {
+  font-size: 1rem;
+  color: #ccc;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.race-info {
+  position: absolute;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: auto; /* Allow clicking the start button */
+}
+
+.start-btn {
+  background: #aa3bff;
+  color: white;
+  border: none;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(170, 59, 255, 0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.start-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(170, 59, 255, 0.8);
+}
+
+.race-stats {
+  background: rgba(0, 0, 0, 0.7);
+  padding: 15px 30px;
+  border-radius: 12px;
+  color: white;
+  display: flex;
+  gap: 30px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.timer {
+  color: #ffaa00;
+}
+
+.top-controls {
+  position: absolute;
+  top: 30px;
+  right: 40px;
+  pointer-events: auto;
+  display: flex;
+  gap: 15px;
+}
+
+.env-btn {
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: background 0.2s;
+}
+
+.env-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
