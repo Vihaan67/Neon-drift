@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { lazy } from 'react';
 
 const City = lazy(() => import('./City').then(m => ({ default: m.City })));
 const Countryside = lazy(() => import('./Countryside').then(m => ({ default: m.Countryside })));
@@ -13,7 +13,7 @@ const Coastal = lazy(() => import('./Coastal').then(m => ({ default: m.Coastal }
 export function Biomes() {
   const offset = 500; // distance between biome centers
   return (
-    <Suspense fallback={null}>
+    <>
       <group position={[-offset * 2, 0, 0]}>
         <City />
       </group>
@@ -29,6 +29,6 @@ export function Biomes() {
       <group position={[offset * 2, 0, 0]}>
         <Coastal />
       </group>
-    </Suspense>
+    </>
   );
 }

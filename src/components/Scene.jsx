@@ -8,7 +8,7 @@ import { TrafficManager } from '../ai/TrafficManager';
 import { TrafficLight } from '../ai/TrafficLight';
 import { RaceManager } from '../race/RaceManager';
 import { useEnvironment } from '../EnvironmentContext';
-import { useRef } from 'react';
+import React, { useRef, Suspense } from 'react';
 
 export function Scene() {
   const carBodyRef = useRef(null);
@@ -28,14 +28,16 @@ export function Scene() {
       <Environment preset={isNight ? "night" : "city"} />
 
       <Physics broadphase="sap" gravity={[0, -9.81, 0]}>
-        <SurfacePhysics />
-        <Biomes />
-        <TrafficManager />
-        {/* We place a traffic light at the city intersection [0,0,0] */}
-        <TrafficLight intersectionId="city_center" position={[5, 0, 5]} rotation={[0, Math.PI, 0]} />
-        <RaceManager carBodyRef={carBodyRef} />
-        {/* We pass a ref to the Car so the Camera can follow it */}
-        <Car carRef={carBodyRef} />
+        <Suspense fallback={null}>
+          <SurfacePhysics />
+          <Biomes />
+          <TrafficManager />
+          {/* We place a traffic light at the city intersection [0,0,0] */}
+          <TrafficLight intersectionId="city_center" position={[5, 0, 5]} rotation={[0, Math.PI, 0]} />
+          <RaceManager carBodyRef={carBodyRef} />
+          {/* We pass a ref to the Car so the Camera can follow it */}
+          <Car carRef={carBodyRef} />
+        </Suspense>
       </Physics>
       <Camera targetBody={carBodyRef} />
     </>
